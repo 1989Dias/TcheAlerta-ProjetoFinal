@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="{translator:Translate titNovoAlerta}"                    
+             xmlns:translator="clr-namespace:Multilingual.Helpers"
+             x:Class="TcheAlerta.Views.NovoAlertaPage">      
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="{translator:Translate titInformacao}">
+                        <EntryCell  x:Name="txtTitulo" Placeholder="{translator:Translate titTitulo}" Text="{Binding Titulo}"></EntryCell>
+                        <EntryCell  x:Name="txtObservacao" Placeholder="{translator:Translate titObservacao}" Text="{Binding Observacao}"></EntryCell>
+                    </TableSection>                      
+                </TableRoot> 
+            </TableView>
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{translator:Translate titData}" FontSize="Medium" />
+                                <DatePicker Format="dd/MM/yyyy" VerticalOptions="Start" Date="{Binding Data}"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{translator:Translate titHora}" FontSize="Medium" />
+                                <TimePicker Format="hh:mm tt" VerticalOptions="CenterAndExpand" Time="{Binding Hora, Mode=TwoWay}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button Text="{translator:Translate btnSalvar}" BackgroundColor="Red" TextColor="White" Command="{Binding SalvarAlertaCommand}"/>
+        </StackLayout>  
+    </ContentPage.Content>
+</ContentPage>

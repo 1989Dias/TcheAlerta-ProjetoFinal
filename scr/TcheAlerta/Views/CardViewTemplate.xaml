@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="TcheAlerta.Views.CardViewTemplate">
+    <Frame IsClippedToBounds="True" HasShadow="True" BackgroundColor="White" >
+        <Frame.OutlineColor>
+            <OnPlatform x:TypeArguments="Color" Android="Gray" iOS="Gray"/>
+        </Frame.OutlineColor>
+        <Frame.Margin>
+            <OnPlatform x:TypeArguments="Thickness" Android="7" iOS="7"/>
+        </Frame.Margin>
+        <Frame.Padding>
+            <OnPlatform x:TypeArguments="Thickness" Android="5" iOS="5"/>
+        </Frame.Padding>
+
+        <StackLayout Orientation="Horizontal">
+            <Grid VerticalOptions="CenterAndExpand" Padding="0"
+                  HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" >                
+                    <Label FontAttributes="None" Grid.Row="0"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                       FontSize="16"                      
+                       Text="{Binding Titulo, Mode = TwoWay}" TextColor="Black" >
+                    </Label>
+                </StackLayout>
+                <Grid Grid.Row="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label FontAttributes="None" Grid.Row="1"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Start"
+                           FontSize="14" Text="{Binding Observacao, Mode = TwoWay}" 
+                           TextColor="Gray">
+                        </Label>                      
+                    </StackLayout>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Grid.Row="1" Grid.Column="0" />
+                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Data, StringFormat='{0:dd MMMM, yyyy}'}" HorizontalOptions="Start" VerticalOptions="Start"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="{Binding Hora, StringFormat='{}{0:hh\\:mm}'}" HorizontalOptions="Start" VerticalOptions="Start"/>
+                    </StackLayout>
+                </Grid>               
+            </Grid>            
+        </StackLayout>
+    </Frame>
+</ContentView>

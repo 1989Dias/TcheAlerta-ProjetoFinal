@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:view="clr-namespace:TcheAlerta.Views"
+             mc:Ignorable="d"
+             xmlns:translator="clr-namespace:Multilingual.Helpers"
+             x:Class="TcheAlerta.MainPage"             
+             Title="Tchê Alerta">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="mnuItem1" Text="Alertas" Order="Primary" IconImageSource="alert32.png" Clicked="mnuItem1_Clicked" />    
+    </ContentPage.ToolbarItems>
+    <StackLayout Orientation="Vertical">
+        <Label Text="{translator:Translate titMeusAlertas}"
+             VerticalOptions="Start"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             BackgroundColor="Transparent"
+             HorizontalOptions="CenterAndExpand" />
+        <ListView x:Name="listView"              
+              RowHeight="150" 
+              VerticalOptions="CenterAndExpand"
+              ItemsSource="{Binding Alertas}"             
+              ItemSelected="listView_ItemSelected"
+              HasUnevenRows="True"  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <view:CardViewTemplate/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>  
+</ContentPage>
